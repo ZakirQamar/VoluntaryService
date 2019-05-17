@@ -1,0 +1,102 @@
+<!--<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [ngClass]="{'hidden': !(isHandset$ | async)}"
+      [opened]="!(isHandset$ | async)">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Home</a>
+      <a mat-list-item href="#">Registration</a>
+      <a mat-list-item href="#">Contact</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>voluntary-service</span>
+
+      <div fxFlex fxLayout fxLayoutAlign="flex-end"
+      *ngIf="!(isHandset$ | async)">
+
+      <ul fxLayout fxLayoutGap="20px">
+
+        <li fxHide.xs>
+          <button mat-icon-button>
+            <mat-icon>home</mat-icon>
+          </button>
+        </li>
+
+        <li fxHide.xs>
+          <button mat-icon-button>
+            <mat-icon>help_outline</mat-icon>
+          </button>
+        </li>
+
+        <li>
+          <button mat-icon-button >
+            <mat-icon>person_outline</mat-icon>
+          </button>                              
+        </li>        
+      </ul>
+
+    </div>
+
+    </mat-toolbar>
+    
+    <router-outlet></router-outlet>
+
+    <footer>      
+      <p>Voluntary Service</p>
+    </footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>-->
+
+<mat-sidenav-container class="sidenav-container"> 
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    [ngClass]="{hidden: !(isHandset$ | async)}"
+    fixedInViewport="false"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home">Home</a>
+      <a mat-list-item routerLink="/registration">Registration</a>
+      <a mat-list-item routerLink="/contact">Contact</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content fxLayout="column">
+    <mat-toolbar color="primary" style="padding: 15px;">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Voluntary Service</span>
+      <span class="spacer"></span>
+      <div *ngIf="!(isHandset$ | async)">
+        <a routerLink="/home" >Home</a>
+        <a routerLink="/registration">Registration</a>
+        <a routerLink="/contact">Contact</a>
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->    
+    
+    <router-outlet></router-outlet>
+
+    <app-footer fxFlexOffset="auto"></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
